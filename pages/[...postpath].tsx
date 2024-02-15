@@ -85,13 +85,19 @@ const Post: React.FC<PostProps> = (props) => {
 			<Head>
 				
 				
+				<meta property="og:title" content={removeTags(post.title)} />
+				<meta property="og:description" content={removeTags(post.excerpt)} />
+				<meta property="og:type" content="article" />
 				<meta property="og:locale" content="en_US" />
 				
+				<meta property="article:published_time" content={post.dateGmt} />
+				<meta property="article:modified_time" content={post.modifiedGmt} />
 				<meta property="og:image" content={post.featuredImage.node.sourceUrl} />
 				<meta
 					property="og:image:alt"
-					content={post.featuredImage.node.altText}
+					content={post.featuredImage.node.altText || post.title}
 				/>
+				<title>{post.title}</title>
 				
 			</Head>
 			<div className="post-container">
